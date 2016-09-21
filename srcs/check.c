@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 13:36:58 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/04 15:56:33 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/06 11:36:43 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int					check_complete(t_ant *ants)
 	return (0);
 }
 
-static int			check_double_nodes(t_data *data)
+static int			check_double_nodes(t_data *data, int db_start, int db_end)
 {
 	t_node			*ptr;
 	t_node			*ptr2;
@@ -41,8 +41,16 @@ static int			check_double_nodes(t_data *data)
 				return (-1);
 			ptr2 = ptr2->next;
 		}
+		if (ptr->type == END)
+			++db_end;
+		if (ptr->type == START)
+			++db_start;
 		ptr = ptr->next;
 	}
+	if (db_start > 1)
+		return (-1);
+	if (db_end > 1)
+		return (-1);
 	return (0);
 }
 
@@ -52,7 +60,7 @@ int					check_data(t_data *data)
 		ft_error();
 	else if (data->start->tubes == NULL || data->end->tubes == NULL)
 		ft_error();
-	else if (check_double_nodes(data) < 0)
+	else if (check_double_nodes(data, 0, 0) < 0)
 		ft_error();
 	return (0);
 }

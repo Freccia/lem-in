@@ -6,7 +6,7 @@
 #    By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 18:07:52 by lfabbro           #+#    #+#              #
-#    Updated: 2016/09/04 13:12:49 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/09/21 10:25:13 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,16 @@ SRC_NAME = main.c\
 		   lem_in.c\
 		   weights.c path.c\
 		   parsing_nodes.c parsing_tubes.c options.c\
-		   check.c help.c new.c ft_free.c error.c ft_xword.c\
+		   check.c help.c new.c new2.c ft_free.c error.c ft_xword.c\
 		   print.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
-LIB_NAMES = ftprintf
+LIB_NAMES = ft
 
 SRC_PATH = ./srcs/
 OBJ_PATH = ./objs/
 INC_PATH = ./includes/
-LIB_PATH = ./libftprintf/
+LIB_PATH = ./libft/
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -47,17 +47,16 @@ LIB = $(addprefix -l,$(LIB_NAMES))
 ## RULES ##
 all:
 	@make -C $(LIB_PATH)
-	@make -C $(LIB_PATH) clean
 	@echo "\x1b[44m\x1b[32mMaking $(NAME)\x1b[0m\x1b[0m"
 	@make $(NAME)
 
 $(NAME):
 	$(CC) $(CFLAGS) $(INC) $(LIB_LINK) $(LIB) $(SRC) -o $(NAME)
 
-clean :
+clean : libclean
 	@/bin/rm -fv $(OBJ)
 
-fclean : clean
+fclean : libfclean clean
 	@/bin/rm -fv $(NAME)
 
 libre :

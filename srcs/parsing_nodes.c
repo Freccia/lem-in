@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/01 10:22:42 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/04 16:31:35 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/20 10:24:49 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,18 @@
 
 static int				new_node_info(t_node *node, char *line, int type)
 {
+	char			*coord;
+
+	coord = NULL;
 	if (line && line[0] != 'L')
 	{
 		node->name = ft_xword(line, 1, ' ');
+		(ft_strchr(node->name, '-') > 0 ? ft_error() : NULL);
+		(ft_strchr(node->name, '\t') > 0 ? ft_error() : NULL);
+		coord = ft_xword(line, 2, ' ');
+		(!ft_isalldigits(coord)) ? ft_error() : NULL;
+		coord = ft_xword(line, 3, ' ');
+		(!ft_isalldigits(coord)) ? ft_error() : NULL;
 		node->type = type;
 		return (0);
 	}
@@ -50,21 +59,21 @@ static t_line			*parse_nodes(char **line, t_data *data, int fd)
 	int				max_nodes;
 	t_line			*file_ptr;
 
-	type = 0;
+	type = NODE;
 	max_nodes = 0;
 	file_ptr = data->file;
 	while (get_next_line(fd, line) && ++max_nodes < INT_MAX)
 	{
-		if (ft_strchr(*line, '-') && *line[0] != '#')
+		if (ft_strnchr(*line, ' ') != 2 && *line[0] != '#')
 			break ;
 		if (*line[0] != '#')
 		{
 			(get_node(*line, data, type) < 0) ? ft_error() : NULL;
 			data->n_nodes += 1;
-			type = 0;
+			type = NODE;
 		}
 		else
-			type = ft_whichtype(*line);
+			type = ft_whichtype(*line, type);
 		file_ptr->next = new_line(*line);
 		file_ptr = file_ptr->next;
 		free(*line);
@@ -83,8 +92,7 @@ t_data					*parsing(int fd, int opt)
 	data->opt = opt;
 	file_ptr = NULL;
 	line = NULL;
-	if (get_next_line(fd, &line) < 0)
-		ft_error();
+	skip_comments_and_get_line(fd, &line);
 	if (!ft_isalldigits(line))
 		ft_error();
 	if ((data->n_ants = ft_atoi(line)) <= 0 || data->n_ants > INT_MAX)

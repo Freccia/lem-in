@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 10:59:13 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/04 16:10:56 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/06 11:27:52 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,12 +116,13 @@ t_paths							*new_paths(void);
 t_node							*new_node(void);
 t_data							*new_data(void);
 t_tube							*new_tube(t_node *dst);
+t_line							*new_line(char *line);
 
 /*
 **	HELP
 */
-t_line							*new_line(char *line);
-int								ft_whichtype(char *line);
+int								skip_comments_and_get_line(int fd, char **line);
+int								ft_whichtype(char *line, int type);
 int								ft_strnchr(char *str, char c);
 int								ft_isalldigits(char *line);
 t_node							*mdfind_node(t_data *data, char *node);

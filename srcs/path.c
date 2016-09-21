@@ -6,11 +6,29 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/30 14:04:29 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/04 16:32:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/06 11:10:29 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+static int				start_end_repetition(t_paths *paths, t_node *start)
+{
+	t_tube			*ptr;
+
+	ptr = start->tubes;
+	while (ptr)
+	{
+		if (ptr->node->type == END)
+		{
+			if (paths)
+				return (0);
+			return (1);
+		}
+		ptr = ptr->next;
+	}
+	return (1);
+}
 
 static t_node			*min_weight_node(t_tube *tube, char *start)
 {
@@ -74,7 +92,8 @@ t_paths					*add_path(t_data *data, t_paths **paths)
 	t_paths			*ptr;
 
 	t = new_paths();
-	if ((t->path = find_path(data)) == NULL)
+	if ((t->path = find_path(data)) == NULL || \
+			!start_end_repetition(*paths, data->start))
 	{
 		free(t);
 		return (NULL);

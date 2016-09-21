@@ -1,0 +1,16 @@
+5
+##start
+start 0 0
+##end
+##lalala
+end 1 1
+a 1 0
+b 2 0
+c 3 0
+start-a
+start-b
+start-b
+a-end
+b-c
+c-end
+# lol

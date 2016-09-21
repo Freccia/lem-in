@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 11:09:31 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/01 12:17:30 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/05 16:00:54 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void			malloc_error(void)
 
 void			ft_error(void)
 {
-	ft_printf("Error\n");
+	ft_putstr_fd("Error\n", 2);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 13:54:04 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/08/21 13:54:05 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/04/04 13:19:57 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-# include "libftprintf.h"
+# include "./libft.h"
 
 # define BUFF_SIZE 10000
 # define MAX_FD 2560

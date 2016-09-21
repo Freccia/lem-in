@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/29 13:40:30 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/04 16:25:43 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/05 16:22:13 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ static t_ant			*advance_ant(t_ant *ant)
 {
 	if (ant->path)
 	{
-		if (ant->path->node->type != END)
-			ft_printf("L%d-%s ", ant->n, ant->path->node->name);
+		ft_printf("L%d-%s ", ant->n, ant->path->node->name);
 		ant->path = ant->path->next;
 	}
 	return (ant->next);
@@ -68,9 +67,9 @@ static int				go_ants(t_ant *ants, t_paths *paths)
 			ant = advance_ant(ant);
 			paths_ptr = paths_ptr->next;
 		}
-		ft_putchar('\n');
 		++n_shots;
 		complete = check_complete(ants);
+		ft_putchar('\n');
 	}
 	return (n_shots);
 }
