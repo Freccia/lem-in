@@ -1,5 +1,5 @@
 
-*** lfabbro's note: This piece of code was written by mressier, I thank her for wrinting this tests ***
+*** lfabbro's note: This piece of code was written by mressier, I thank her for wrinting those tests ***
 
 Welcome,
 
