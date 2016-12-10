@@ -6,14 +6,13 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/21 13:22:06 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/01 12:17:54 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/12/10 12:15:05 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-#include "lemin.h"
+#include "libft.h"
 
-static int		count_words(int x, char *str, char div)
+static int		ft_count_words(int x, char *str, char div)
 {
 	int			n;
 	int			i;
@@ -36,8 +35,8 @@ char			*ft_xword(char *str, int x, char div)
 
 	i = -1;
 	word = NULL;
-	if ((i = count_words(x, str, div)) < 0)
-		ft_error();
+	if ((i = ft_count_words(x, str, div)) < 0)
+		return (NULL);
 	j = i;
 	while (str[j] && str[j] != div)
 		++j;

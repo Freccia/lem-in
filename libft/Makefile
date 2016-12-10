@@ -6,7 +6,7 @@
 #    By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/27 11:20:09 by lfabbro           #+#    #+#              #
-#    Updated: 2016/09/21 10:24:34 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/12/10 12:15:35 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRC_LIB_NAME = ft_strlen.c ft_strstr.c ft_strcpy.c ft_strdup.c ft_strndup.c\
 			   ft_lstdelone.c ft_lstdel.c ft_lstadd.c ft_lstiter.c\
 			   ft_lstmap.c ft_wstrlen.c ft_abs.c ft_swap.c ft_convert_base.c\
 			   ft_realloc.c ft_getnbr.c ft_wchar_size.c ft_nbrlen.c\
-			   ft_atol.c ft_atoll.c ft_isnbr.c ft_getchar.c\
+			   ft_atol.c ft_atoll.c ft_isnbr.c ft_getchar.c ft_xword.c\
 			   get_next_line.c
 
 
@@ -44,7 +44,7 @@ OBJ_PATH = ./objs
 INC_PATH = ./includes
 LIB_PATH = ./libft/
 
-CC = gcc
+CC = @gcc
 CFLAGS = -Wall -Wextra -Werror $(INC)
 
 
@@ -64,7 +64,7 @@ LIB = $(addprefix -l,$(LIB_NAME))
 
 ## RULES ##
 all : 
-	@echo "\x1b[44m\x1b[32mMaking libft\x1b[0m\x1b[0m"
+	@echo "\033[44;32mMaking libft\033[0m"
 	@make $(NAME)
 
 $(NAME): 
@@ -74,10 +74,12 @@ $(NAME):
 	@ranlib $(NAME)
 
 clean:
-	@/bin/rm -fv $(OBJ_NAME)
-	@/bin/rm -fv $(OBJ_LIB)
+	@echo "\033[41;33mRemoving libft objects\033[0m"
+	@/bin/rm -f $(OBJ_NAME)
+	@/bin/rm -f $(OBJ_LIB)
 
 fclean: clean
+	@echo "\033[41;33mRemoving libft executables\033[0m"
 	@/bin/rm -fv $(NAME)
 
 re: fclean all

@@ -6,7 +6,7 @@
 #    By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/04/07 18:07:52 by lfabbro           #+#    #+#              #
-#    Updated: 2016/09/21 10:25:13 by lfabbro          ###   ########.fr        #
+#    Updated: 2016/12/10 12:16:00 by lfabbro          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRC_NAME = main.c\
 		   lem_in.c\
 		   weights.c path.c\
 		   parsing_nodes.c parsing_tubes.c options.c\
-		   check.c help.c new.c new2.c ft_free.c error.c ft_xword.c\
+		   check.c help.c new.c new2.c ft_free.c error.c\
 		   print.c
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
