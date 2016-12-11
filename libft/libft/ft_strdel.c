@@ -6,22 +6,23 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:02:08 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/09 17:13:11 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:52:32 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
 #include "libft.h"
+
+/*
+** DESCRIPTION:
+**     Takes as a parameter the address of a string that need to be
+**     freed with free(3), then sets its pointer to NULL.
+*/
 
 void	ft_strdel(char **as)
 {
 	if (as)
 	{
-		if (*as)
-		{
-			free(*as);
-			*as = NULL;
-		}
+		free(*as);
+		*as = NULL;
 	}
 }

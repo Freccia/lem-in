@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 16:09:05 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/09 18:43:49 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/11/23 16:40:55 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,13 @@
 
 char			*ft_strdup(const char *s1)
 {
-	int		lenght;
 	int		i;
 	char	*dup;
 
-	lenght = ft_strlen(s1);
 	i = 0;
-	dup = (char*)malloc(sizeof(*dup) * lenght + 1);
-	if (dup == NULL)
-		return (0);
-	while (i < lenght)
+	if ((dup = ft_strnew(ft_strlen(s1) + 1)) == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
 		dup[i] = s1[i];
 		i++;

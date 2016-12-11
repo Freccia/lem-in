@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 18:22:16 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/11/30 12:00:23 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 13:13:50 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*pt;
+	unsigned char	*ptr;
 
-	pt = s;
+	ptr = s;
 	while (n--)
 	{
-		*pt = 0;
-		pt++;
+		*ptr = 0;
+		++ptr;
 	}
 }

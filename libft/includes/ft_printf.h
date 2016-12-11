@@ -6,16 +6,25 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/07 11:22:01 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/03/30 14:32:30 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:34:00 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdlib.h>
-# include <unistd.h>
+/*
+**	stdarg:
+**
+**	stdlib:
+**
+**	wchar:
+**
+**	locale:
+*/
+
 # include <stdarg.h>
+# include <stdlib.h>
 # include <wchar.h>
 # include <locale.h>
 # include "libft.h"
@@ -52,8 +61,8 @@ typedef struct		s_args
 	char			ch;
 	wchar_t			*wstr;
 	wchar_t			wchar;
-	intmax_t		nbr;
-	uintmax_t		u_nbr;
+	long long		nbr;
+	long long		u_nbr;
 	void			*ptr;
 }					t_args;
 
@@ -130,7 +139,7 @@ void				set_init_st(t_struct *st, const char *format);
 */
 int					str_lenght(t_struct *st);
 int					wstr_lenght(t_struct *st);
-int					nbr_lenght(intmax_t nbr, int base);
-int					unbr_lenght(uintmax_t nbr, int base);
+int					nbr_lenght(long long nbr, int base);
+int					unbr_lenght(long long nbr, int base);
 
 #endif

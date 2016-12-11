@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:27:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/14 09:59:09 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 18:42:50 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ char	*ft_strcpy(char *dst, const char *src)
 	i = 0;
 	if (src)
 	{
-		while (src[i])
+		while (src[i] != '\0')
 		{
 			dst[i] = src[i];
-			i++;
+			++i;
 		}
-		dst[i] = src[i];
+		dst[i] = '\0';
 	}
 	return (dst);
 }

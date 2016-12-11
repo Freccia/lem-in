@@ -6,27 +6,32 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 15:57:06 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/03 16:42:07 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 22:31:28 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
+
+/*
+** DESCRIPTION:
+**     Allocates (with malloc(3)) and returns a “fresh” string ending
+**     with ’\0’. Each character of the string is initialized at
+**     ’\0’. If the allocation fails the function returns NULL.
+*/
 
 char	*ft_strnew(size_t size)
 {
 	char	*space;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	if ((space = malloc(sizeof(char) * size + 1)) == NULL)
+	if ((space = malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
-	while ((size_t)i < size)
+	while (i < size)
 	{
 		space[i] = '\0';
-		i++;
+		++i;
 	}
-	space[i] = '\0';
 	return (space);
 }

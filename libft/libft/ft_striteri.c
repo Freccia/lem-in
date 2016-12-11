@@ -6,11 +6,18 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:28:27 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/12/10 12:56:21 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:58:58 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** DESCRIPTION:
+**     Applies the function f to each character of the string passed
+**     as argument, and passing its index as first argument. Each
+**     character is passed by address to f to be modified if necessary.
+*/
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
@@ -21,10 +28,10 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	{
 		if (*s)
 		{
-			while (s[i])
+			while (*s)
 			{
-				f(i, &s[i]);
-				i++;
+				f(i, s);
+				++s;
 			}
 		}
 	}

@@ -79,9 +79,7 @@ void					lem_in(t_data *data)
 	t_ant			*ants;
 	t_paths			*paths;
 	int				n_shots;
-	int				i;
 
-	i = 0;
 	n_shots = 0;
 	paths = NULL;
 	ants = NULL;

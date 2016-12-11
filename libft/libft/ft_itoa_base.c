@@ -6,13 +6,13 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/02 12:40:39 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/03/15 18:46:50 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:12:06 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int		get_size(long val, long base)
+static int		ft_itoa_base_nb_len(long val, long base)
 {
 	int		size;
 
@@ -31,7 +31,7 @@ static int		get_size(long val, long base)
 	return (size);
 }
 
-static char		*ft_return_zero(void)
+static char		*ft_itoa_base_zero(void)
 {
 	char	*num;
 
@@ -43,12 +43,12 @@ static char		*ft_return_zero(void)
 	return (num);
 }
 
-static char		*itoa_base_return(long value, long base, char set)
+static char		*ft_itoa_base_return(long value, long base, char set)
 {
 	int			size;
 	char		*num;
 
-	size = get_size(value, base);
+	size = ft_itoa_base_nb_len(value, base);
 	if ((num = (char*)malloc(sizeof(char) * size)) == NULL)
 		return (NULL);
 	num[size] = '\0';
@@ -69,16 +69,18 @@ static char		*itoa_base_return(long value, long base, char set)
 	return (num);
 }
 
-char			*ft_itoa_base(int value, int base, char set)
+char			*ft_itoa_base(int value, int base)
 {
 	long	value_;
 	long	base_;
+	char	set;
 
 	value_ = value;
 	base_ = base;
+	set = 'A';
 	if (base_ < 2 || base_ > 16)
 		return (NULL);
 	if (value_ == 0)
-		return (ft_return_zero());
-	return (itoa_base_return(value_, base_, set));
+		return (ft_itoa_base_zero());
+	return (ft_itoa_base_return(value_, base_, set));
 }

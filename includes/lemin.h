@@ -17,7 +17,7 @@
 # define START			2
 # define END			1
 
-# include "libftprintf.h"
+# include "libft.h"
 
 typedef struct s_tube			t_tube;
 typedef struct s_node			t_node;

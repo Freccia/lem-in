@@ -6,22 +6,24 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 14:55:05 by lfabbro           #+#    #+#             */
-/*   Updated: 2015/11/30 12:32:53 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 18:25:44 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strcat(char *s1, const char *s2)
 {
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	while (s1[i])
 		i++;
-	while (*s2)
+	while (s2[j])
 	{
-		s1[i] = *s2;
-		s2++;
-		i++;
+		s1[i] = s2[j];
+		++j;
+		++i;
 	}
 	s1[i] = '\0';
 	return (s1);

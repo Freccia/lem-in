@@ -43,3 +43,4 @@ char			*ft_xword(char *str, int x, char div)
 	word = ft_strndup(&str[i], (j - i));
 	return (word);
 }
+

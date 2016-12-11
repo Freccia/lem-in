@@ -21,8 +21,8 @@ static int				new_node_info(t_node *node, char *line, int type)
 	if (line && line[0] != 'L')
 	{
 		node->name = ft_xword(line, 1, ' ');
-		(ft_strchr(node->name, '-') > 0 ? ft_error() : NULL);
-		(ft_strchr(node->name, '\t') > 0 ? ft_error() : NULL);
+		(ft_strchr(node->name, '-')) ? ft_error() : NULL;
+		(ft_strchr(node->name, '\t')) ? ft_error() : NULL;
 		coord = ft_xword(line, 2, ' ');
 		(!ft_isalldigits(coord)) ? ft_error() : NULL;
 		coord = ft_xword(line, 3, ' ');

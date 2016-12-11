@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "lemin.h"
+#include <limits.h>
 
 static int				start_end_repetition(t_paths *paths, t_node *start)
 {

@@ -6,11 +6,16 @@
 /*   By: lfabbro <lfabbro@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/18 14:59:28 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/03/10 16:25:21 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:32:57 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** DESCRIPTION:
+**     Returns num's absolute value
+*/
 
 int				ft_abs(int num)
 {

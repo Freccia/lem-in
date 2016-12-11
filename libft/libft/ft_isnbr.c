@@ -6,7 +6,7 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/12 13:23:54 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/20 11:05:19 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:36:21 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int			ft_isnbr(char *str)
 {
-	int	is_num;
+	int	is_nbr;
 
-	is_num = 0;
+	is_nbr = 0;
 	if (str)
 	{
 		while (*str && (*str == ' ' || *str == '\n' || *str == '\t' ||
@@ -25,7 +25,7 @@ int			ft_isnbr(char *str)
 		if (*str && (*str == '+' || *str == '-'))
 			++str;
 		if (*str >= '0' && *str <= '9')
-			is_num = 1;
+			is_nbr = 1;
 	}
-	return (is_num);
+	return (is_nbr);
 }

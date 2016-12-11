@@ -6,28 +6,28 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 11:52:19 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/09/15 14:15:50 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/21 11:24:35 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-int			ft_nbrlen(int nbr, int base)
+int			ft_nbrlen_base(int nbr, int base)
 {
-	int		size;
+	int		len;
 
-	size = 0;
+	len = 0;
 	if (nbr == 0)
 		return (1);
 	if (nbr < 0)
 	{
 		nbr = -nbr;
-		++size;
+		++len;
 	}
 	while (nbr)
 	{
 		nbr /= base;
-		++size;
+		++len;
 	}
-	return (size);
+	return (len);
 }

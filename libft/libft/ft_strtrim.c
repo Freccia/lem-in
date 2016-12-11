@@ -6,61 +6,76 @@
 /*   By: lfabbro <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 12:00:18 by lfabbro           #+#    #+#             */
-/*   Updated: 2016/01/15 18:56:31 by lfabbro          ###   ########.fr       */
+/*   Updated: 2016/09/28 10:45:09 by lfabbro          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_justforpleasure(char const *s, int cpy_len, char *cpy, int fwd)
+/*
+** DESCRIPTION:
+**     Allocates (with malloc(3)) and returns a copy of the string
+**     given as argument without whitespaces at the beginning or at
+**     the end of the string. Will be considered as whitespaces the
+**     following characters ’ ’, ’\n’ and ’\t’. If s has no whitespaces
+**     at the beginning or at the end, the function returns a
+**     copy of s. If the allocation fails the function returns NULL.
+**
+** LEGENDA:
+**     cp = copy;
+**     cl = cp len;
+**     sl = s len;
+**     bw = backward skip;
+**     fw = forward skip;
+*/
+
+static char		*ft_trim_cp(char const *s, int cl, int fw)
 {
+	char	*cp;
 	int		i;
 
 	i = 0;
-	while (i < cpy_len)
+	if ((cp = ft_strnew(cl)) == NULL)
+		return (NULL);
+	while (i < cl)
 	{
-		cpy[i] = s[fwd];
-		i++;
-		fwd++;
+		cp[i] = s[fw];
+		++i;
+		++fw;
 	}
-	cpy[cpy_len] = '\0';
-	return (cpy);
+	cp[cl] = '\0';
+	return (cp);
 }
 
-static int	ft_set_cpy_len(int fwd, int bkw, int len)
+static int		ft_cp_len(int fw, int bw, int len)
 {
-	int		cpy_len;
+	int		cl;
 
-	if (bkw)
-		cpy_len = (len - fwd - (len - bkw));
-	else
-		cpy_len = 0;
-	return (cpy_len);
+	cl = 0;
+	if (bw)
+		cl = (len - fw - (len - bw));
+	return (cl);
 }
 
-char		*ft_strtrim(char const *s)
+char			*ft_strtrim(char const *s)
 {
-	char	*cpy;
-	int		len;
-	int		cpy_len;
-	int		bkw;
-	int		fwd;
+	int		sl;
+	int		cl;
+	int		bw;
+	int		fw;
 
 	if (s)
 	{
-		len = ft_strlen(s);
-		bkw = len;
-		fwd = 0;
-		while (s[fwd] == ' ' || s[fwd] == '\n' || s[fwd] == '\t')
-			fwd++;
-		while (bkw && (s[bkw - 1] == ' ' || s[bkw - 1] == '\n' || \
-					s[bkw - 1] == '\t'))
-			bkw--;
-		cpy_len = ft_set_cpy_len(fwd, bkw, len);
-		if ((cpy = (char *)malloc(sizeof(char) * cpy_len + 1)) == NULL)
-			return (0);
-		cpy = ft_justforpleasure(s, cpy_len, cpy, fwd);
-		return (cpy);
+		sl = ft_strlen(s);
+		bw = sl;
+		fw = 0;
+		while (s[fw] == ' ' || s[fw] == '\n' || s[fw] == '\t')
+			++fw;
+		while (bw && (s[bw - 1] == ' ' || s[bw - 1] == '\n' || \
+					s[bw - 1] == '\t'))
+			--bw;
+		cl = ft_cp_len(fw, bw, sl);
+		return (ft_trim_cp(s, cl, fw));
 	}
-	return (0);
+	return (NULL);
 }
